@@ -296,8 +296,7 @@ window.GO_TEXT_ZH = {
   "Best: {n} days": ["最长：{n} 天", "最長：{n} 天"],
   "{n} of {total} unlocked": ["已解锁 {n} / {total}", "已解鎖 {n} / {total}"],
   "Log in to earn achievements and a daily streak. They are saved on your account.": ["登录后才能获得成就和连续天数，它们会保存在你的账号里。", "登入後才能獲得成就和連續天數，它們會儲存在你的帳號裡。"],
-  "Solve a puzzle, finish a game against a bot or online, or make a daily move every day to keep your streak. Miss a day and it starts again.":
-    ["每天做一道题、和电脑或在线下完一盘棋，或在每日对局里下一步，就能保持连续天数。漏掉一天就会从头开始。", "每天做一道題、和電腦或線上下完一盤棋，或在每日對局裡下一步，就能保持連續天數。漏掉一天就會從頭開始。"],
+  "Solve a puzzle, finish a game against a bot or online, or make a daily move to add a day to your streak (once a day). It only ends if you don't play for 7 days in a row.": ["做一道题、和电脑或在线下完一盘棋，或在每日对局里下一步，连续天数就会加一天（每天一次）。只有连续 7 天都没下棋，才会从头开始。", "做一道題、和電腦或線上下完一盤棋，或在每日對局裡下一步，連續天數就會加一天（每天一次）。只有連續 7 天都沒下棋，才會從頭開始。"],
   "Bot achievements only count for games from the normal start, without Undo or Hint. The admin checks them: faking one means a 7-day ban and losing every achievement.":
     ["电脑对局的成就只算从正常开局、没有悔棋或提示的对局。管理员会检查：作假会被封号 7 天，并失去所有成就。", "電腦對局的成就只算從正常開局、沒有悔棋或提示的對局。管理員會檢查：作假會被封號 7 天，並失去所有成就。"],
   "Your account is banned until {when} for cheating on achievements.": ["你的账号因成就作弊被封禁，直到 {when}。", "你的帳號因成就作弊被封禁，直到 {when}。"],
@@ -328,10 +327,10 @@ window.GO_TEXT_ZH = {
   "By a hair": ["险胜", "險勝"], "Win a daily game by half a point.": ["以半目赢一盘每日对局。", "以半目贏一盤每日對局。"],
   "Every size": ["全尺寸", "全尺寸"], "Win a game on 9×9, 13×13 and 19×19.": ["在 9×9、13×13 和 19×19 上各赢一盘。", "在 9×9、13×13 和 19×19 上各贏一盤。"],
   "Stylist": ["造型师", "造型師"], "Try 5 different boards in the Look window.": ["在外观窗口里试用 5 种不同的棋盘。", "在外觀視窗裡試用 5 種不同的棋盤。"],
-  "3-day streak": ["连续 3 天", "連續 3 天"], "Play 3 days in a row.": ["连续 3 天下棋。", "連續 3 天下棋。"],
-  "7-day streak": ["连续 7 天", "連續 7 天"], "Play 7 days in a row.": ["连续 7 天下棋。", "連續 7 天下棋。"],
-  "30-day streak": ["连续 30 天", "連續 30 天"], "Play 30 days in a row.": ["连续 30 天下棋。", "連續 30 天下棋。"],
-  "100-day streak": ["连续 100 天", "連續 100 天"], "Play 100 days in a row.": ["连续 100 天下棋。", "連續 100 天下棋。"],
+  "3-day streak": ["连续 3 天", "連續 3 天"], "Reach a 3-day streak.": ["达到连续 3 天。", "達到連續 3 天。"],
+  "7-day streak": ["连续 7 天", "連續 7 天"], "Reach a 7-day streak.": ["达到连续 7 天。", "達到連續 7 天。"],
+  "30-day streak": ["连续 30 天", "連續 30 天"], "Reach a 30-day streak.": ["达到连续 30 天。", "達到連續 30 天。"],
+  "100-day streak": ["连续 100 天", "連續 100 天"], "Reach a 100-day streak.": ["达到连续 100 天。", "達到連續 100 天。"],
   "Daily": ["每日对局", "每日對局"],
 
   // ---- Dragon's Review ----

@@ -49,10 +49,10 @@
       ["graduate", "🎓", "Graduate", "Finish all the Learn Go lessons."],
     ]],
     ["Streak", [
-      ["streak-3", "🔥", "3-day streak", "Play 3 days in a row."],
-      ["streak-7", "🔥", "7-day streak", "Play 7 days in a row."],
-      ["streak-30", "🔥", "30-day streak", "Play 30 days in a row."],
-      ["streak-100", "🔥", "100-day streak", "Play 100 days in a row."],
+      ["streak-3", "🔥", "3-day streak", "Reach a 3-day streak."],
+      ["streak-7", "🔥", "7-day streak", "Reach a 7-day streak."],
+      ["streak-30", "🔥", "30-day streak", "Reach a 30-day streak."],
+      ["streak-100", "🔥", "100-day streak", "Reach a 100-day streak."],
     ]],
   ];
   const BY_ID = new Map();
@@ -221,10 +221,10 @@
     setTimeout(() => box.remove(), 4600);
   }
 
-  // The streak to show: it only counts if you played today or yesterday.
+  // The streak to show: it ends after 7 days in a row with no play (record_activity, supabase/26).
   function currentStreak(profile) {
     if (!profile || !profile.streak || !profile.streak_day) return 0;
-    return profile.streak_day >= localDay(-1) ? profile.streak : 0;
+    return profile.streak_day >= localDay(-7) ? profile.streak : 0;
   }
 
   // ---- What pages report ----

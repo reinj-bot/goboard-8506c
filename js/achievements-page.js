@@ -31,7 +31,7 @@
         element("b", "", t("{n}-day streak", { n: streak })),
         element("span", "message", t("Best: {n} days", { n: profile.streak_best || 0 })));
       head.append(streakBox,
-        element("p", "message", t("Solve a puzzle, finish a game against a bot or online, or make a daily move every day to keep your streak. Miss a day and it starts again.")),
+        element("p", "message", t("Solve a puzzle, finish a game against a bot or online, or make a daily move to add a day to your streak (once a day). It only ends if you don't play for 7 days in a row.")),
         element("p", "message", t("{n} of {total} unlocked", { n: unlocked.size, total: ach.BY_ID.size })));
     }
     head.append(element("p", "message small-note", t("Bot achievements only count for games from the normal start, without Undo or Hint. The admin checks them: faking one means a 7-day ban and losing every achievement.")));

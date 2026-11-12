@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.55.0
+- The daily streak only ends after 7 days in a row with no play (it used to end after 1 missed day). Each day you play still adds one day. supabase/26-streak-7-days.sql.
+
 ## 0.54.0
 - Your-turn alerts: phone or browser alerts when it's your turn in a daily game or someone sends you a daily challenge, even with the site closed. Turned on per device in the account window. Logging out turns them off on that device. On iPhone and iPad the site must be on the Home Screen. supabase/25-push-alerts.sql + the send-alert function.
 
