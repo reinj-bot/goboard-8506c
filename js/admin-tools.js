@@ -11,7 +11,7 @@
   const REASON_NAMES = { cheating: "Cheating", rude: "Rude in chat", name: "Bad name or profile", other: "Other" };
   const ACTION_NAMES = {
     ban: "Banned", unban: "Unbanned", warn: "Warned", reset_profile: "Profile reset", force_rename: "Forced rename",
-    set_rating: "Rating changed", undo_game: "Game undone", proof_fine: "Proof marked fine",
+    set_rating: "Rating changed", set_streak: "Streak changed", undo_game: "Game undone", proof_fine: "Proof marked fine",
     proof_ban: "Banned for faked proof", dismiss_report: "Report dismissed", code_chosen: "Admin code chosen",
   };
   const BAN_LENGTHS = [[1, "1 day"], [7, "7 days"], [30, "30 days"], [0, "Forever"]];
@@ -204,6 +204,21 @@
       stats.append(stat);
     }
     box.append(stats);
+    // Streaks are public on the profile, so they're read directly (the card itself comes from supabase/21).
+    const streak = { now: 0, best: 0 };
+    const streakStats = element("div", "stat-row");
+    box.append(streakStats);
+    accounts.client.from("profiles").select("streak, streak_best, streak_day").eq("id", p.id).maybeSingle().then(({ data }) => {
+      if (!data) return;
+      streak.now = window.GoAchievements ? window.GoAchievements.currentStreak(data) : data.streak;
+      streak.best = data.streak_best || 0;
+      for (const [label, value] of [["Streak", `🔥 ${streak.now}`], ["Best streak", streak.best],
+        ["Last played", data.streak_day ? new Date(`${data.streak_day}T12:00`).toLocaleDateString() : "—"]]) {
+        const stat = element("div", "stat");
+        stat.append(element("b", "", String(value)), element("span", "", label));
+        streakStats.append(stat);
+      }
+    });
 
     const actions = element("div", "button-row admin-actions");
     if (p.banned_until) {
@@ -259,6 +274,30 @@
     }, "Next", ({ rating, reason }) => runAction(`Admin code to change ${p.username}'s rating`, "admin_set_rating",
       { p_player: p.id, p_rating: rating, p_reason: reason }, fail, (code) => {
         note.textContent = "Rating changed.";
+        reopen(code);
+      }))));
+    actions.append(button("Change streak", "", () => formWindow(`Change ${p.username}'s streak`, (body, problem) => {
+      const number = element("input");
+      number.type = "number";
+      number.min = 0;
+      number.max = 10000;
+      number.value = Math.max(streak.now, streak.best);
+      const setBest = element("input");
+      setBest.type = "checkbox";
+      const bestLabel = element("label", "remember-row");
+      bestLabel.append(setBest, " Also set their best streak to this number (to lower it)");
+      const reason = textBox("Why (only in the log)", 200);
+      body.append(element("p", "label", "New streak in days (0 removes it)"), number, bestLabel,
+        element("p", "label", "Reason"), reason,
+        element("p", "message", "It counts as played today, so it lasts 7 days from now. Achievements they already earned stay."));
+      return () => {
+        const days = Number(number.value);
+        if (!Number.isInteger(days) || days < 0 || days > 10000) { problem.textContent = "The streak must be between 0 and 10000 days"; return null; }
+        return { days, best: setBest.checked, reason: reason.value.trim() };
+      };
+    }, "Next", ({ days, best, reason }) => runAction(`Admin code to change ${p.username}'s streak`, "admin_set_streak",
+      { p_player: p.id, p_days: days, p_set_best: best, p_reason: reason }, fail, (code) => {
+        note.textContent = days ? `Streak set to ${days} days.` : "Streak removed.";
         reopen(code);
       }))));
     box.append(actions);

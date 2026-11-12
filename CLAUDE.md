@@ -120,7 +120,7 @@
 - Achievements: `js/achievements.js` (GROUPS list; ids must match supabase/10-achievements.sql; only for logged-in
   players). DB-checked ones via check_my_achievements(); proof ones (bot wins, big capture) via claim_achievement with
   the game; trusted ones (puzzles, stylist, all-sizes). Undo, Hint or a custom position makes a bot game unfair
-  (unfairGame in game-page.js). Streak: record_activity(local date, checked within 1 day; ends after 7 days with no play, supabase/26). Admin = table admins
+  (unfairGame in game-page.js). Streak: record_activity(local date, checked within 1 day; ends after 7 days with no play, supabase/26; admins change it with admin_set_streak, supabase/27). Admin = table admins
   (reinj); admin.html reviews proofs and admin_ban (7 days, removes achievements). Bans are enforced in
   check_two_step (the pre-request function), and accounts.js shows the ban text.
 - Admin code: supabase/12-admin-code.sql (bcrypt hash in admin_codes, set only via SQL; admin_* functions take

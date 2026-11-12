@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.56.0
+- Admins can restore or remove a player's daily streak (Admin page -> Players -> Change streak), with an option to set the best streak too. The player card shows the streak, best streak and last day played. supabase/27-admin-streak.sql.
+
 ## 0.55.0
 - The daily streak only ends after 7 days in a row with no play (it used to end after 1 missed day). Each day you play still adds one day. supabase/26-streak-7-days.sql.
 
